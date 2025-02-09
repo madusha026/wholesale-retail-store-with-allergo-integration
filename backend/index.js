@@ -12,6 +12,12 @@ const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
 });
 
+pool.query('SELECT NOW()', (err, res) => {
+    if (err) console.error(err);
+    else console.log('Connected to PostgreSQL:', res.rows);
+});
+
+
 app.get('/', (req,res) => {
     res.send('API is working');
 });
